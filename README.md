@@ -12,3 +12,23 @@ whereis mysql
 
 
 nano /etc/systemd/system/mysql.service.d/override.conf
+
+[Service]
+ExecStart=
+ExecStart=/usr/sbin/mysqld --skip-grant-tables --skip-networking #untuk reset password
+
+systemctl restart mysql
+
+mysql
+
+flush privileges;
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+
+flush privileges;
+
+edit kembali override.conf 
+
+restart mysql
+
+
