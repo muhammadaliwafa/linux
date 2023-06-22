@@ -61,10 +61,10 @@ void loop() {
   }
 
   if (motorOn && digitalRead(21)) {
-    if (deceleration <= -25) {
-      rotateCCW();
-      balik = true;
-    }
+//    if (deceleration <= -25) {
+//      rotateCCW();
+//      balik = true;
+//    }
   }
 
   if (!digitalRead(21) && balik) {
@@ -109,11 +109,12 @@ void loop() {
     //    Serial.print(currentDistance, 2);
     //    Serial.println(" mm)");
     //    Serial.print("RPS: ");
+    Serial.println(currentRPS);
     n++;
     if (n > 4) {
       n = 0;
       deceleration = currentRPS - lsRPS;
-      Serial.println(deceleration);
+//      Serial.println(deceleration);
       lsRPS = currentRPS;
     }
 
