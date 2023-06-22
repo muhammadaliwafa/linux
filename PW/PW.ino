@@ -42,24 +42,25 @@ void setup() {
 bool balik = false;
 void loop() {
   static float lsRPS, deceleration;
+  static int n = 0;
   if (!digitalRead(14) && !balik) {
     rotateCW();
-    
-//        Serial.println('1');
-        motorOn = true;
+
+    //        Serial.println('1');
+    motorOn = true;
   }
   else if (!digitalRead(15) && digitalRead(21)) {
     rotateCCW();
     motorOn = true;
-//        Serial.println('2');
+    //        Serial.println('2');
   }
-  else if(!balik) {
-//        Serial.println('3');
+  else if (!balik) {
+    //        Serial.println('3');
     stopMotor();
-        motorOn = false;
+    motorOn = false;
   }
 
-  if(motorOn && digitalRead(21)){
+  if (motorOn && digitalRead(21)) {
     if (deceleration <= -25) {
       rotateCCW();
       balik = true;
@@ -108,10 +109,15 @@ void loop() {
     //    Serial.print(currentDistance, 2);
     //    Serial.println(" mm)");
     //    Serial.print("RPS: ");
-    
-    deceleration = currentRPS - lsRPS;
-    Serial.println(deceleration);
-    lsRPS = currentRPS;
+    n++;
+    if (n > 4) {
+      n = 0;
+      deceleration = currentRPS - lsRPS;
+      Serial.println(deceleration);
+      lsRPS = currentRPS;
+    }
+
+
     pulseCount = 0;
   }
 }
