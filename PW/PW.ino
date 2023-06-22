@@ -109,12 +109,12 @@ void loop() {
     //    Serial.print(currentDistance, 2);
     //    Serial.println(" mm)");
     //    Serial.print("RPS: ");
-    Serial.println(currentRPS);
+//    Serial.println(currentRPS);
     n++;
-    if (n > 4) {
+    if (n > 6) {
       n = 0;
       deceleration = currentRPS - lsRPS;
-//      Serial.println(deceleration);
+      Serial.println(deceleration);
       lsRPS = currentRPS;
     }
 
