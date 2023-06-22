@@ -41,6 +41,7 @@ void setup() {
 }
 bool balik = false;
 void loop() {
+  static float lsRPS, deceleration;
   if (!digitalRead(14) && !balik) {
     rotateCW();
     
@@ -107,7 +108,10 @@ void loop() {
     //    Serial.print(currentDistance, 2);
     //    Serial.println(" mm)");
     //    Serial.print("RPS: ");
-    Serial.println(currentRPS);
+    
+    deceleration = currentRPS - lsRPS;
+    Serial.println(deceleration);
+    lsRPS = currentRPS;
     pulseCount = 0;
   }
 }
