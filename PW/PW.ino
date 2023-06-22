@@ -60,10 +60,10 @@ void loop() {
   }
 
   if(motorOn && digitalRead(21)){
-//    if (currentRPS <= 48) {
-//      rotateCCW();
-//      balik = true;
-//    }
+    if (deceleration <= -25) {
+      rotateCCW();
+      balik = true;
+    }
   }
 
   if (!digitalRead(21) && balik) {
