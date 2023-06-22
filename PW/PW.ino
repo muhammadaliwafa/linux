@@ -45,16 +45,16 @@ void loop() {
   if (!digitalRead(14) && !balik) {
     rotateCW();
     
-        Serial.println('1');
+//        Serial.println('1');
         motorOn = true;
   }
   else if (!digitalRead(15) && digitalRead(21)) {
     rotateCCW();
     motorOn = true;
-        Serial.println('2');
+//        Serial.println('2');
   }
   else if(!balik) {
-        Serial.println('3');
+//        Serial.println('3');
     stopMotor();
         motorOn = false;
   }
