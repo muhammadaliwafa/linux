@@ -34,3 +34,6 @@ restart mysql
 
 sudo ip route add 192.168.0.0/24 via 172.16.2.135
 sudo ip route del 192.168.0.0/24 via 172.16.2.135
+
+
+useradd -s /bin/bash -d /home/newname -m newname
